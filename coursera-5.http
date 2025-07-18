@@ -1,0 +1,50 @@
+### Register a new user with role "User"
+POST http://localhost:5000/register
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser
+email=testuser@example.com
+password=TestPassword123!
+role=User
+
+###
+
+### Register a new user with role "Admin"
+POST http://localhost:5000/register
+Content-Type: application/x-www-form-urlencoded
+
+username=adminuser
+email=admin@example.com
+password=AdminPassword123!
+role=Admin
+
+###
+
+### Login as testuser
+POST http://localhost:5000/login
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser
+password=TestPassword123!
+
+###
+
+### Login as adminuser
+POST http://localhost:5000/login
+Content-Type: application/x-www-form-urlencoded
+
+username=adminuser
+password=AdminPassword123!
+
+###
+
+### Access user-only endpoint (replace TOKEN below)
+GET http://localhost:5000/user-only
+Authorization: Bearer {{TOKEN}}
+
+###
+
+### Access admin-only endpoint (replace TOKEN below)
+GET http://localhost:5000/admin-only
+Authorization: Bearer {{TOKEN}}
+
