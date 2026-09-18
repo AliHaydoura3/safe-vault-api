@@ -1,0 +1,15 @@
+## .NET build artifacts
+bin/
+obj/
+
+## Visual Studio
+.vs/
+*.user
+
+## Editor / OS
+.vscode/
+.DS_Store
+
+## Local configuration (contains credentials)
+appsettings.Development.json
+secrets.json
