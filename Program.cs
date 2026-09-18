@@ -18,7 +18,9 @@ builder
     .AddDefaultTokenProviders();
 
 // Add JWT Authentication
-var key = Encoding.UTF8.GetBytes("super_secret_key_123!");
+var key = Encoding.UTF8.GetBytes(
+    builder.Configuration["Jwt:SecretKey"] ?? "super_secret_key_123!"
+);
 builder
     .Services.AddAuthentication(options =>
     {
@@ -55,8 +57,8 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
     }
 
-    var admin = new IdentityUser { UserName = "Ali", Email = "ali@example.com" };
-    var result = await userManager.CreateAsync(admin, "SecurePassword123!");
+    var admin = new IdentityUser { UserName = "Ali", Email = builder.Configuration["Admin:Email"] ?? "ali@example.com" };
+    var result = await userManager.CreateAsync(admin, builder.Configuration["Admin:Password"] ?? "SecurePassword123!");
     if (result.Succeeded)
         await userManager.AddToRoleAsync(admin, "Admin");
 }

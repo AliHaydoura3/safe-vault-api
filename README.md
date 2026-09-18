@@ -50,10 +50,20 @@ Send the JWT as a `Bearer` token in the `Authorization` header for protected rou
 dotnet test
 ```
 
+## Configuration
+
+Demo values are used as fallbacks in `Program.cs`. Override them via environment variables, user secrets, or `appsettings.json`:
+
+| Setting         | Description                            | Demo default        |
+| --------------- | -------------------------------------- | ------------------- |
+| `Jwt:SecretKey` | Signing key for JWT tokens             | `super_secret_key_123!` |
+| `Admin:Email`   | Seeded administrator email             | `ali@example.com`   |
+| `Admin:Password`| Seeded administrator password          | `SecurePassword123!` |
+
 ## Notes
 
 - The in-memory database resets on each restart. The `UserRepository` class shows how the same patterns are applied against SQL Server.
-- The JWT signing key is hardcoded in `Program.cs` for demonstration purposes. For a production deployment, move it to configuration or user secrets.
+- The demo JWT key and admin credentials are placeholders for local development — always override them in production.
 
 ## Author
 
